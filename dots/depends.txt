@@ -16,3 +16,4 @@ exa
 ranger
 bat
 autojump
+trash-cli
