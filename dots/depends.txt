@@ -12,3 +12,6 @@ alacritty
 nwg-look
 fish
 starship
+exa
+ranger
+bat
