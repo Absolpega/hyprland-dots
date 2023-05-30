@@ -65,10 +65,7 @@ function fish_prompt --description "show starship prompt and run some commands"
 end
 
 function fish_greeting
-	set temp_status status
-
 	# https://github.com/Absolpega/fetch
 	command -v fetch > /dev/null && fetch
-
-	sh -c "exit $temp_status"
+	true
 end
