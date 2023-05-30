@@ -9,7 +9,7 @@ grimshot
 swaylock-effects
 rofi
 alacritty
-nwg-look
+nwg-look-bin
 fish
 starship
 exa
