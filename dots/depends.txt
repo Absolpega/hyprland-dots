@@ -1,6 +1,6 @@
 sddm
 hyprland-nvidia
-xdg-portal-hyprland
+xdg-desktop-portal-hyprland
 hyprpaper
 dunst
 eww-wayland
