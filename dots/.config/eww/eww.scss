@@ -1,0 +1,117 @@
+* {
+	all: unset;
+}
+
+.spacer-350-h {
+	background-color: transparent;
+	color: transparent;
+	margin-left:	350px;
+	margin-right:	350px;
+}
+
+.spacer-300-h {
+	background-color: transparent;
+	color: transparent;
+	margin-left:	300px;
+	margin-right:	300px;
+}
+
+.spacer-200-h {
+	background-color: transparent;
+	color: transparent;
+	margin-left:	200px;
+	margin-right:	200px;
+}
+
+.spacer-100-h {
+	background-color: transparent;
+	color: transparent;
+	margin-left:	100px;
+	margin-right:	100px;
+}
+
+.spacer-10-h {
+	background-color: transparent;
+	color: transparent;
+	margin-left:	10px;
+	margin-right:	10px;
+}
+
+.spacer-350-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	350px;
+	margin-bottom	:	350px;
+}
+
+.spacer-300-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	300px;
+	margin-bottom	:	300px;
+}
+
+.spacer-200-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	200px;
+	margin-bottom	:	200px;
+}
+
+.spacer-100-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	100px;
+	margin-bottom	:	100px;
+}
+
+.spacer-10-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	10px;
+	margin-bottom	:	10px;
+}
+
+window {
+	background-color: transparent;
+}
+
+.bar {
+	background-color: #121212;
+	padding: 5px;
+	border-radius: 25px;
+	//margin-left: 5px;
+	//margin-right: 5px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-family: "JetBrainsMono Nerd Font";
+}
+
+.time {
+	margin-left: 450px;
+}
+
+.time-v {
+	margin-top: 150px;
+}
+
+.workspace-entry-box {
+}
+
+.workspace-entry {
+	border-radius: 16px;
+	transition-duration: 200ms
+}
+
+.empty {
+	color: #404040
+}
+
+.current {
+	color: #ccaaff;
+}
+
+.workspace-entry:hover {
+	background-color: #ffffff;
+	color: #000000;
+}

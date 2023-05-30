@@ -1,0 +1,14 @@
+sddm
+hyprland-nvidia
+xdg-portal-hyprland
+hyprpaper
+dunst
+eww-wayland
+polkit-gnome
+grimshot
+swaylock-effects
+rofi
+alacritty
+nwg-look
+fish
+starship
