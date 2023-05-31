@@ -9,6 +9,7 @@ grimshot
 swaylock-effects
 rofi
 alacritty
+ttf-jetbrains-mono-nerd
 nwg-look-bin
 fish
 starship
