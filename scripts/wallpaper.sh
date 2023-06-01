@@ -2,4 +2,4 @@
 
 swww init
 
-swww img ~/.config/hypr/backgrounds/sunset.jpg
+swww img ~/.config/hypr/wallpapers/sunset.jpg
