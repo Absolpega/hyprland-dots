@@ -94,7 +94,7 @@
   (box
     :class "bar battery-widget"
     :visible {EWW_BATTERY == "" ? false : true}
-    (label :text "${EWW_BATTERY.capacity}")
+    (label :text "${round(EWW_BATTERY.total_avg, 0)}")
     )
   )
 
