@@ -2,74 +2,100 @@
 	all: unset;
 }
 
-.spacer-350-h {
-	background-color: transparent;
-	color: transparent;
-	margin-left:	350px;
-	margin-right:	350px;
-}
-
-.spacer-300-h {
-	background-color: transparent;
-	color: transparent;
-	margin-left:	300px;
-	margin-right:	300px;
-}
-
-.spacer-200-h {
-	background-color: transparent;
-	color: transparent;
-	margin-left:	200px;
-	margin-right:	200px;
-}
-
-.spacer-100-h {
-	background-color: transparent;
-	color: transparent;
-	margin-left:	100px;
-	margin-right:	100px;
-}
-
-.spacer-10-h {
-	background-color: transparent;
-	color: transparent;
-	margin-left:	10px;
-	margin-right:	10px;
-}
-
-.spacer-350-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	350px;
-	margin-bottom	:	350px;
-}
-
-.spacer-300-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	300px;
-	margin-bottom	:	300px;
-}
-
-.spacer-200-v {
+.spacer-200px-v {
 	background-color: transparent;
 	color: transparent;
 	margin-top		:	200px;
 	margin-bottom	:	200px;
 }
 
-.spacer-100-v {
+.spacer-100px-v {
 	background-color: transparent;
 	color: transparent;
 	margin-top		:	100px;
 	margin-bottom	:	100px;
 }
 
-.spacer-10-v {
+.spacer-10px-v {
 	background-color: transparent;
 	color: transparent;
 	margin-top		:	10px;
 	margin-bottom	:	10px;
+}
+
+.spacer-15rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	15rem;
+	margin-bottom	:	15rem;
+}
+
+.spacer-10rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	10rem;
+	margin-bottom	:	10rem;
+}
+
+.spacer-8rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	8rem;
+	margin-bottom	:	8rem;
+}
+
+.spacer-7rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	7rem;
+	margin-bottom	:	7rem;
+}
+
+.spacer-6rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	6rem;
+	margin-bottom	:	6rem;
+}
+
+.spacer-5rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	5rem;
+	margin-bottom	:	5rem;
+}
+
+.spacer-4rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	4rem;
+	margin-bottom	:	4rem;
+}
+
+.spacer-3rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	3rem;
+	margin-bottom	:	3rem;
+}
+
+.spacer-2rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	2rem;
+	margin-bottom	:	2rem;
+}
+
+.spacer-1rem-v {
+	background-color: transparent;
+	color: transparent;
+	margin-top		:	1rem;
+	margin-bottom	:	1rem;
+}
+
+.empty {
+	margin: 0px;
+	padding: 0px;
 }
 
 window {
@@ -78,40 +104,58 @@ window {
 
 .bar {
 	background-color: #121212;
-	padding: 5px;
-	border-radius: 25px;
-	//margin-left: 5px;
-	//margin-right: 5px;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	//padding: 0.8rem;
+	padding: 0.3rem;
+	border-radius: 2rem;
+	//margin-left:	0.5rem;
+	margin-right:	0.5rem;
+	margin-bottom:	0.5rem;
+	margin-top:		0.5rem;
 	font-family: "JetBrainsMono Nerd Font";
+	font-size: 1rem;
 }
 
-.time {
-	margin-left: 450px;
+.battery-widget {
+	
 }
 
-.time-v {
-	margin-top: 150px;
+.time-widget {
+	//margin-top: 10rem;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
 }
 
-.workspace-entry-box {
+.workspaces-widget {
 }
 
-.workspace-entry {
-	border-radius: 16px;
-	transition-duration: 200ms
-}
-
-.empty {
-	color: #404040
-}
-
-.current {
+.workspace-current-id {
 	color: #ccaaff;
 }
 
-.workspace-entry:hover {
+.workspace-occupied-id {
+
+}
+
+.workspace-empty-id {
+	color: #404040
+}
+
+.workspace-id {
+	margin-left:	1.4rem;
+	margin-right:	1.4rem;
+	margin-top:		1rem;
+	margin-bottom:	1rem;
+}
+
+.workspace-box {
+	border-radius: 1.4rem;
+	transition-duration: 250ms
+}
+
+.workspace-box:hover {
 	background-color: #ffffff;
 	color: #000000;
+}
+
+.workspace-current-id:hover {
 }

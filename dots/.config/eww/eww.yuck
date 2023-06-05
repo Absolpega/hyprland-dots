@@ -1,60 +1,78 @@
-(defwidget spacer-350 []
-  (box :class "spacer-350")
+
+(defwidget spacer-200px []
+  (box :class "spacer-200px-v")
   )
 
-(defwidget spacer-300 []
-  (box :class "spacer-300")
+(defwidget spacer-100px []
+  (box :class "spacer-100px-v")
   )
 
-(defwidget spacer-200 []
-  (box :class "spacer-200")
+(defwidget spacer-10px []
+  (box :class "spacer-10px-v")
   )
 
-(defwidget spacer-100 []
-  (box :class "spacer-100")
+(defwidget spacer-8rem []
+  (box :class "spacer-8rem-v")
   )
 
-(defwidget spacer-10 []
-  (box :class "spacer-10")
+(defwidget spacer-15rem []
+  (box :class "spacer-15rem-v")
   )
 
-(defwidget spacer-350-v []
-  (box :class "spacer-350-v")
+(defwidget spacer-10rem []
+  (box :class "spacer-10rem-v")
   )
 
-(defwidget spacer-300-v []
-  (box :class "spacer-300-v")
+(defwidget spacer-8rem []
+  (box :class "spacer-8rem-v")
   )
 
-(defwidget spacer-200-v []
-  (box :class "spacer-200-v")
+(defwidget spacer-7rem []
+  (box :class "spacer-7rem-v")
   )
 
-(defwidget spacer-100-v []
-  (box :class "spacer-100-v")
+(defwidget spacer-6rem []
+  (box :class "spacer-6rem-v")
   )
 
-(defwidget spacer-10-v []
-  (box :class "spacer-10-v")
+(defwidget spacer-5rem []
+  (box :class "spacer-5rem-v")
+  )
+
+(defwidget spacer-4rem []
+  (box :class "spacer-4rem-v")
+  )
+
+(defwidget spacer-3rem []
+  (box :class "spacer-3rem-v")
+  )
+
+(defwidget spacer-2rem []
+  (box :class "spacer-2rem-v")
+  )
+
+(defwidget spacer-1rem []
+  (box :class "spacer-1rem-v")
   )
 
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
-(defwidget workspaces []
-  (eventbox
-    ;;:onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
-    :class "workspaces-widget"
-    (box :space-evenly true :class "workspace-entry-box bar"
-      :orientation "vertical"
-      (label :text "${workspaces}${current_workspace}" :visible false)
-      (for workspace in workspaces
-        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-                  :class "workspace-entry"
-                  ;;:class "${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-          (box
-            :class "${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-            (label :text "${workspace.id}")
-            )
+(defwidget workspaces-widget []
+  (box
+    :space-evenly true
+    :class "bar workspaces-widget"
+    :orientation "vertical"
+    (label
+      :text "${workspaces}${current_workspace}"
+      :visible false
+      )
+    (for workspace in workspaces
+      (eventbox
+        :onclick "hyprctl dispatch workspace ${workspace.id}"
+        :class "workspace-box ${workspace.id == current_workspace ? "workspace-current-box" : ""} ${workspace.windows > 0 ? "workspace-occupied-box" : "workspace-empty-box"}"
+        (box
+          :class "workspace-id ${workspace.id == current_workspace ? "workspace-current-id" : ""} ${workspace.windows > 0 ? "workspace-occupied-id" : "workspace-empty-id"}"
+          (label :text "${workspace.id}")
           )
         )
       )
@@ -62,47 +80,56 @@
   )
 
 (deflisten window :initial "..." "bash ~/.config/eww/scripts/get-window-title")
-(defwidget window_w []
+(defwidget window-widget []
   (box
     (label :text "${window}")
     )
   )
 
 (defwidget empty []
-  (box)
+  (box :class "empty")
   )
 
-;;(defpoll time :interval "10s" "date +'%I : %M  %p'")
-;;(defwidget time_w []
-;;  (box :class "bar time"
-;;    (label :text "${time}")
-;;    )
-;;  )
-
-(defpoll time-v :interval "1s" "date +'%I%n%M%n%p'")
-(defwidget time_w-v []
-  (box :class "bar time-v"
-    (label :text "${time-v}")
+(defwidget battery-widget []
+  (box
+    :class "bar battery-widget"
+    :visible {EWW_BATTERY == "" ? false : true}
+    (label :text "${EWW_BATTERY.capacity}")
     )
   )
 
-(defwidget bar- []
-  (centerbox
+(defpoll time :interval "1s" "date +'%I%n%M%n%p'")
+(defwidget time-widget []
+  (box :class "bar time-widget"
+    (label :text "${time}")
+    )
+  )
+
+
+(defwidget bar-widget []
+  (box
     :orientation "vertical"
-    ;;(centerbox(empty)(workspaces)(empty))
-    (workspaces)
-    (spacer-200-v)
-    ;;(empty)
-    (time_w-v)
+    (box
+      :orientation "vertical"
+      :valign "start"
+      (workspaces-widget)
+      )
+    (box
+      :orientation "vertical"
+      :valign "end"
+      (battery-widget)
+      (time-widget)
+      )
     )
   )
+
 
 (defwindow bar-window
   :monitor 0
   :windowtype "dock"
   :geometry (geometry
-              :x "5px"
-              :y "5px"
+              :x "0%"
+              :y "0%"
               :width "3%"
               :height "100%"
               :anchor "right center"
@@ -114,6 +141,6 @@
            )
   :wm-ignore false
   :exclusive true
-  (bar-)
+  (bar-widget)
   )
 
