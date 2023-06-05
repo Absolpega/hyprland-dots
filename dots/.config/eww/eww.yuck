@@ -94,7 +94,7 @@
   (box
     :class "bar battery-widget"
     :visible {EWW_BATTERY == "" ? false : true}
-    (label :text "${round(EWW_BATTERY.total_avg, 0)}")
+    (label :text "${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
     )
   )
 
