@@ -122,8 +122,20 @@ window {
 
 .time-widget {
 	//margin-top: 10rem;
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.time-button {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	border-radius: 1rem;
+	transition-duration: 250ms
+}
+
+.time-button:hover {
+	background-color: #ffffff;
+	color: #000000;
 }
 
 .workspaces-widget {
@@ -158,5 +170,24 @@ window {
 	color: #000000;
 }
 
-.workspace-current-id:hover {
+.workspace-box:hover > :first-child {
+	color: #000000;
 }
+
+.calendar-widget {
+	padding: 1rem;
+	color: #404040;
+}
+
+.calendar-widget > *, .calendar-widget > * > *{
+	padding: 0.2rem;
+}
+
+.calendar-widget.header, .calendar-widget.button {
+	 color: white;
+}
+
+.calendar-widget:selected {
+	color: #ccaaff;
+}
+

@@ -70,9 +70,9 @@
       (eventbox
         :onclick "hyprctl dispatch workspace ${workspace.id}"
         :class "workspace-box ${workspace.id == current_workspace ? "workspace-current-box" : ""} ${workspace.windows > 0 ? "workspace-occupied-box" : "workspace-empty-box"}"
-        (box
+        (label
           :class "workspace-id ${workspace.id == current_workspace ? "workspace-current-id" : ""} ${workspace.windows > 0 ? "workspace-occupied-id" : "workspace-empty-id"}"
-          (label :text "${workspace.id}")
+          :text "${workspace.id}"
           )
         )
       )
@@ -94,15 +94,18 @@
   (box
     :class "bar battery-widget"
     :visible {EWW_BATTERY == "" ? false : true}
-    (label :text " 
-${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
+    (label :text "${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
     )
   )
 
 (defpoll time :interval "1s" "date +'%I%n%M%n%p'")
 (defwidget time-widget []
   (box :class "bar time-widget"
-    (label :text "${time}")
+    (button
+      :class "time-button"
+      :onclick "eww close calendar-window || eww open calendar-window"
+      (label :text "${time}")
+      )
     )
   )
 
@@ -117,7 +120,6 @@ ${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
       )
     (box
       :orientation "vertical"
-      :space-evenly false
       :valign "end"
       (battery-widget)
       (time-widget)
@@ -144,5 +146,29 @@ ${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
   :wm-ignore false
   :exclusive true
   (bar-widget)
+  )
+
+(defpoll today :interval "1h" "date +'%e'")
+(defwidget calendar-widget []
+  (calendar
+    :class "calendar-widget bar"
+    :onclick "trutrue"
+    :day "${today}"
+    )
+  )
+
+(defwindow calendar-window
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry
+              :x "84%"
+              :y "78%"
+              :width "8%"
+              :height "8%"
+            )
+  :stacking "fg"
+  :wm-ignore false
+  :exclusive true
+  (calendar-widget)
   )
 
