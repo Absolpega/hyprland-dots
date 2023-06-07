@@ -94,7 +94,8 @@
   (box
     :class "bar battery-widget"
     :visible {EWW_BATTERY == "" ? false : true}
-    (label :text "${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
+    (label :text "
+${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
     )
   )
 
@@ -121,6 +122,7 @@
     (box
       :orientation "vertical"
       :valign "end"
+      :space-evenly false
       (battery-widget)
       (time-widget)
       )
