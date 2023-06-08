@@ -5,6 +5,7 @@
 files=$(find . -type f -print)
 
 for file in $files; do
-	echo "git diff $file ~/$file"
-	sh -c "git diff $file ~/$file"
+	command="git diff $file ~/$file"
+	echo "$command"
+	sh -c "$command"
 done
