@@ -1,7 +1,7 @@
 sddm
 hyprland-nvidia
 xdg-desktop-portal-hyprland
-hyprpaper
+swww
 dunst
 eww-wayland
 polkit-gnome
