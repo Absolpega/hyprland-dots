@@ -171,7 +171,7 @@ button selected {
     text-color: 					@fg;
     border: 						2px;
     border-radius: 					4px;
-    border-color: 					@cyan;
+    border-color: 					#ccaaff;
 }
 
 scrollbar {
