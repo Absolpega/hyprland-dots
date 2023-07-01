@@ -1,0 +1,14 @@
+#!/bin/sh
+
+shader=~/.config/eww/scripts/screen-colors-shader.frag
+shader_name="$(basename $shader)"
+tmp_shader=/tmp/$shader_name
+
+[ ! -e $tmp_shader ] && cp $shader $tmp_shader
+#cp $shader $tmp_shader
+
+sed -i -e "s/\\(0\\)\\] \\*= .*;/\\1\\] \\*= $1;/g" $tmp_shader
+sed -i -e "s/\\(1\\)\\] \\*= .*;/\\1\\] \\*= $2;/g" $tmp_shader
+sed -i -e "s/\\(2\\)\\] \\*= .*;/\\1\\] \\*= $3;/g" $tmp_shader
+
+hyprctl keyword decoration:screen_shader $tmp_shader
