@@ -55,6 +55,33 @@
   (box :class "spacer-1rem-v")
   )
 
+; https://github.com/druskus20/eugh  /revealer-example
+; Revealer on hover, using children
+(defwidget revealer-on-hover [revealvar revealvar-name ?class ?duration ?transition ?orientation]
+  (box
+    :class "${class} revealer-on-hover"
+    :orientation {orientation ?: "vertical"}
+    :space-evenly false
+    (eventbox
+      :orientation {orientation ?: "vertical"}
+      :onhover "${EWW_CMD} update ${revealvar-name}=true"
+      :onhoverlost "${EWW_CMD} update ${revealvar-name}=false"
+      (box
+        :orientation {orientation ?: "vertical"}
+        :space-evenly false
+        (revealer
+          :reveal revealvar
+          :transition {transition ?: "slideup"}
+          :duration {duration ?: "500ms"}
+          (children :nth 1)
+          )
+        (children :nth 0)
+        )
+      )
+    )
+  )
+
+
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 (defwidget workspaces-widget []
@@ -79,15 +106,85 @@
     )
   )
 
-(deflisten window :initial "..." "bash ~/.config/eww/scripts/get-window-title")
-(defwidget window-widget []
-  (box
-    (label :text "${window}")
-    )
-  )
+;(deflisten window :initial "..." "bash ~/.config/eww/scripts/get-window-title")
+;(defwidget window-widget []
+;  (box
+;    (label :text "${window}")
+;    )
+;  )
 
 (defwidget empty []
   (box :class "empty")
+  )
+
+(defvar dummy 0)
+
+(defvar brightness-widget-reveal false)
+(defwidget brightness-widget []
+  (box
+    :class "bar brightness-widget"
+    :orientation "vertical"
+    (revealer-on-hover
+      :revealvar brightness-widget-reveal
+      :revealvar-name "brightness-widget-reveal"
+      (label
+        :class "icon"
+        :text "󰃞"
+        )
+      (box
+        (scale
+          :min 0
+          :max 100
+          :value 100
+          :flipped true
+          :onchange "brightnessctl set {}%"
+          :draw-value false
+          :round-digits 0
+          :orientation "vertical"
+          )
+        (scale
+          :class "gammascale"
+          :min 0
+          :max 200
+          :value 100
+          :flipped true
+          :onchange "scripts/change-screen-colors 1.0 $(echo '{}' | awk '{printf \"%f\", $1/100}') $(echo '{}' | awk '{printf \"%f\", $1/100}')"
+          ;:onchange "${EWW_CMD} update dummy="
+          ;:onchange "brightnessctl set {}%"
+          :draw-value false
+          :round-digits 1
+          :orientation "vertical"
+          )
+        )
+      )
+    )
+  )
+
+(defpoll volume-current :interval "10s" "pamixer --get-volume")
+(defvar volume-widget-reveal false)
+(defwidget volume-widget []
+  (box
+    :class "bar volume-widget"
+    :orientation "vertical"
+    (revealer-on-hover
+      :revealvar volume-widget-reveal
+      :revealvar-name "volume-widget-reveal"
+      (label
+        :class "icon"
+        :text "󰕾"
+        )
+      (scale
+        :min 0
+        :max 100
+        :value volume-current
+        :flipped true
+        :onchange "pamixer --set-volume {}"
+        :draw-value false
+        :round-digits 0
+        :orientation "vertical"
+        )
+      )
+    )
   )
 
 (defwidget battery-widget []
@@ -95,8 +192,8 @@
     :class "bar battery-widget"
     :visible {EWW_BATTERY == "" ? false : true}
     :orientation "vertical"
-      (label :text " ")
-      (label :text "${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
+    (label :text " ")
+    (label :text "${replace(EWW_BATTERY.total_avg, "[.].*", "")}")
     )
   )
 
@@ -124,6 +221,8 @@
       :orientation "vertical"
       :valign "end"
       :space-evenly false
+      (brightness-widget)
+      (volume-widget)
       (battery-widget)
       (time-widget)
       )
