@@ -31,7 +31,7 @@ alias l='ls'
 alias la='ls -hal'
 alias lt='exa -T --icons'
 
-alias cat='bat'
+#alias cat='bat'
 
 alias reload='source ~/.config/fish/config.fish'
 alias rm='trash-put'

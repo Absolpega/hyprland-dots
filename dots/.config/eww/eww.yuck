@@ -1,3 +1,4 @@
+(defvar dummy "")
 
 (defwidget spacer-200px []
   (box :class "spacer-200px-v")
@@ -84,11 +85,11 @@
 
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
-(defwidget workspaces-widget []
+(defwidget workspaces-widget [?orientation]
   (box
     :space-evenly true
     :class "bar workspaces-widget"
-    :orientation "vertical"
+    :orientation {orientation ?: "vertical"}
     (label
       :text "${workspaces}${current_workspace}"
       :visible false
@@ -117,8 +118,9 @@
   (box :class "empty")
   )
 
-(defvar dummy 0)
 
+(defpoll brightness-value :interval "1s" "echo \"$(brightnessctl get) $(brightnessctl max)\" | awk '{printf \"%f\", ($1*100)/$2}'")
+(defpoll gamma-value :interval "1s" "cat /tmp/current-gamma | awk '{print $3*100}'")
 (defvar brightness-widget-reveal false)
 (defwidget brightness-widget []
   (box
@@ -129,13 +131,14 @@
       :revealvar-name "brightness-widget-reveal"
       (label
         :class "icon"
-        :text "󰃞"
+        :text "󰃞 "
         )
       (box
+        :orientation "horizontal"
         (scale
           :min 0
           :max 100
-          :value 100
+          :value brightness-value
           :flipped true
           :onchange "brightnessctl set {}%"
           :draw-value false
@@ -146,11 +149,9 @@
           :class "gammascale"
           :min 0
           :max 200
-          :value 100
+          :value gamma-value
           :flipped true
-          :onchange "scripts/change-screen-colors 1.0 $(echo '{}' | awk '{printf \"%f\", $1/100}') $(echo '{}' | awk '{printf \"%f\", $1/100}')"
-          ;:onchange "${EWW_CMD} update dummy="
-          ;:onchange "brightnessctl set {}%"
+          :onchange "scripts/change-screen-colors 1.0 $(echo '{}' | awk '{printf \"%f\", $1/85}') $(echo '{}' | awk '{printf \"%f\", $1/100}')"
           :draw-value false
           :round-digits 1
           :orientation "vertical"
@@ -160,7 +161,7 @@
     )
   )
 
-(defpoll volume-current :interval "10s" "pamixer --get-volume")
+(defpoll volume-value :interval "1s" "pamixer --get-volume")
 (defvar volume-widget-reveal false)
 (defwidget volume-widget []
   (box
@@ -171,12 +172,12 @@
       :revealvar-name "volume-widget-reveal"
       (label
         :class "icon"
-        :text "󰕾"
+        :text "󰕾 "
         )
       (scale
         :min 0
         :max 100
-        :value volume-current
+        :value volume-value
         :flipped true
         :onchange "pamixer --set-volume {}"
         :draw-value false
@@ -202,7 +203,7 @@
   (box :class "bar time-widget"
     (button
       :class "time-button"
-      :onclick "eww close calendar-window || eww open calendar-window"
+      :onclick "${EWW_CMD} close calendar-window || ${EWW_CMD} open calendar-window; timedatectl set-timezone \"$(curl --fail https://ipapi.co/timezone)\""
       (label :text "${time}")
       )
     )
@@ -273,4 +274,3 @@
   :exclusive true
   (calendar-widget)
   )
-
