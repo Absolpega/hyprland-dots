@@ -149,9 +149,9 @@
           :class "gammascale"
           :min 0
           :max 200
-          :value gamma-value
+          :value {gamma-value ?: 100}
           :flipped true
-          :onchange "scripts/change-screen-colors 1.0 $(echo '{}' | awk '{printf \"%f\", $1/85}') $(echo '{}' | awk '{printf \"%f\", $1/100}')"
+          :onchange "scripts/change-screen-colors 1.0 $(echo '{}' | awk '{printf \"%f\", $1/100}') $(echo '{}' | awk '{printf \"%f\", $1/100}')"
           :draw-value false
           :round-digits 1
           :orientation "vertical"
