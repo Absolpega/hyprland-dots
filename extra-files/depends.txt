@@ -19,3 +19,4 @@ ranger
 bat
 autojump
 trash-cli
+pamixer
