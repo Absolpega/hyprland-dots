@@ -138,7 +138,7 @@
         (scale
           :min 0
           :max 100
-          :value brightness-value
+          :value {brightness-value ?: 100}
           :flipped true
           :onchange "brightnessctl set {}%"
           :draw-value false

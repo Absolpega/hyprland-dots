@@ -1,7 +1,7 @@
 if status is-interactive
 else
-	#echo "not interactive"
-	exit
+    #echo "not interactive"
+    exit
 end
 
 # Commands to run in interactive sessions can go here
@@ -51,21 +51,21 @@ functions --erase starship_prompt
 functions --copy fish_prompt starship_prompt
 
 
-source /home/absolpega/.config/fish/autojump.fish
+source ~/.config/fish/autojump.fish
 
 # -----------------------------------------------------------------------------------------------------
 # function definitions need to be last
 
 # merges history
 function fish_prompt --description "show starship prompt and run some commands"
-	starship_prompt
+    starship_prompt
 
-	# it's not actually as useful as it looks
-	#history merge
+    # it's not actually as useful as it looks
+    #history merge
 end
 
 function fish_greeting
-	# https://github.com/Absolpega/fetch
-	command -v fetch > /dev/null && fetch
-	true
+    # https://github.com/Absolpega/fetch
+    command -v fetch >/dev/null && fetch
+    true
 end
