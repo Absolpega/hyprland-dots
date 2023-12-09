@@ -2,4 +2,6 @@
 
 swww init
 
-swww img ~/.config/hypr/wallpapers/sunset.jpg
+swww img -t none ~/.config/hypr/wallpapers/sunset.jpg
+
+swww img -t wipe ~/.config/hypr/wallpapers/sky.jpg

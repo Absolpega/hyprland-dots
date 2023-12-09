@@ -1,234 +1,147 @@
 * {
-	all: unset;
+  all: unset;
 }
 
-.spacer-200px-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	200px;
-	margin-bottom	:	200px;
-}
-
-.spacer-100px-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	100px;
-	margin-bottom	:	100px;
-}
-
-.spacer-10px-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	10px;
-	margin-bottom	:	10px;
-}
-
-.spacer-15rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	15rem;
-	margin-bottom	:	15rem;
-}
-
-.spacer-10rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	10rem;
-	margin-bottom	:	10rem;
-}
-
-.spacer-8rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	8rem;
-	margin-bottom	:	8rem;
-}
-
-.spacer-7rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	7rem;
-	margin-bottom	:	7rem;
-}
-
-.spacer-6rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	6rem;
-	margin-bottom	:	6rem;
-}
-
-.spacer-5rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	5rem;
-	margin-bottom	:	5rem;
-}
-
-.spacer-4rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	4rem;
-	margin-bottom	:	4rem;
-}
-
-.spacer-3rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	3rem;
-	margin-bottom	:	3rem;
-}
-
-.spacer-2rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	2rem;
-	margin-bottom	:	2rem;
-}
-
-.spacer-1rem-v {
-	background-color: transparent;
-	color: transparent;
-	margin-top		:	1rem;
-	margin-bottom	:	1rem;
-}
+$circular-radius: 9999px;
 
 .empty {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 window {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .bar {
-	background-color: #121212;
-	color: #ffffff;
-	//padding: 0.8rem;
-	padding: 0.3rem;
-	border-radius: 2rem;
-	//margin-left:	0.5rem;
-	margin-right:	0.5rem;
-	margin-bottom:	0.5rem;
-	margin-top:		0.5rem;
-	font-family: "JetBrainsMono Nerd Font";
-	font-size: 1rem;
+  background-color: #121212;
+  color: #ffffff;
+  //padding: 0.8rem;
+  padding: 0.3rem;
+  border-radius: 2rem;
+  //margin-left:	0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 1rem;
 }
 
 .icon {
-	border-radius: 1rem;
-	background-color: #121212;
-	color: #ffffff;
-	padding: 0.3rem;
-	margin: 0.5rem;
-	margin-right: 0;
-	font-size: 1.5rem;
+  border-radius: $circular-radius;
+  background-color: #121212;
+  color: #ffffff;
+  padding: 0.3rem;
+  margin: 0.5rem;
+  margin-right: 0;
+  font-size: 1.5rem;
 }
 
 .bar-inner {
-	background-color: #121212;
-	color: #ffffff;
-	padding: 0.3rem;
-	margin: 0.5rem;
+  background-color: #121212;
+  color: #ffffff;
+  padding: 0.3rem;
+  margin: 0.5rem;
 }
 
 scale {
-	margin-top: 1rem;
+  margin-top: 1rem;
+
+  trough {
+    all: unset;
+    background-color: #404040;
+    border-radius: $circular-radius;
+    min-height: 7rem;
+    min-width: 0.7rem;
+    highlight {
+      border-radius: $circular-radius;
+      background-color: #ccaaff;
+    }
+  }
+  slider {
+    margin: -1rem -0.4rem;
+    background-color: transparent;
+    border-radius: $circular-radius;
+  }
 }
 
-scale trough {
-	all: unset;
-	background-color: #404040;
-	border-radius: 5rem;
-	min-height: 7rem;
-	min-width: 0.7rem;
-}
-scale trough highlight {
-	all: unset;
-	background-color: #ccaaff;
-	border-radius: 0.5rem;
-}
 .gammascale trough highlight {
-	all: unset;
-	background-image: linear-gradient(#aaccff, #ffaa88);
-	//background-color: #ffaacc;
-	border-radius: 0.5rem;
+  background-image: linear-gradient(#aaccff, #ffaa88);
 }
 
 .battery-widget {
-	padding-top:	2rem;
-	padding-bottom:	2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .time-widget {
-	//margin-top: 10rem;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .time-button {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-	border-radius: 1rem;
-	transition-duration: 250ms
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 1.3rem;
+  transition-duration: 250ms;
 }
 
-.time-button:hover {
-	background-color: #ffffff;
-	color: #000000;
+.workspace-occupied {
 }
 
-.workspaces-widget {
+.workspace-empty {
+  color: #404040;
 }
 
-.workspace-occupied-id {
-
-}
-
-.workspace-empty-id {
-	color: #404040
-}
-
-.workspace-current-id {
-	color: #ccaaff;
+.workspace-current {
+  background-image: linear-gradient(90deg, #ccaaff, #aaccff);
+  color: #000000;
 }
 
 .workspace-id {
-	margin-left:	1.4rem;
-	margin-right:	1.4rem;
-	margin-top:		1rem;
-	margin-bottom:	1rem;
+  transition-duration: 0;
 }
 
-.workspace-box {
-	border-radius: 1.4rem;
-	transition-duration: 250ms
+.workspace {
+  margin: 1rem 1.4rem;
+
+  border-radius: 1.4rem;
+  transition-duration: 250ms;
 }
 
-.workspace-box:hover {
-	background-color: #ffffff;
-	color: #000000;
+.workspace:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .workspace-box:hover > :first-child {
-	color: #000000;
+  color: #000000;
 }
 
 .calendar-widget {
-	padding: 1rem;
-	color: #404040;
+  padding: 1rem;
+  color: #404040;
 }
 
-.calendar-widget > *, .calendar-widget > * > *{
-	padding: 0.2rem;
+.calendar-widget > *,
+.calendar-widget > * > * {
+  padding: 0.2rem;
 }
 
-.calendar-widget.header, .calendar-widget.button {
-	 color: white;
+.calendar-widget.header,
+.calendar-widget.button {
+  color: white;
 }
 
 .calendar-widget:selected {
-	color: #ccaaff;
+  color: #ccaaff;
 }
 
+button {
+  margin-left: 0.3rem;
+  box-shadow: -0.2rem 0.3rem 0 0.1rem #ccaaff;
+}
+
+button:hover {
+  box-shadow: -0.1rem 0.2rem 0 0 #aaccff;
+}

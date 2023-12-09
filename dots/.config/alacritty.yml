@@ -10,7 +10,7 @@ window:
     x: 25
     y: 25
 
-    dynamic_padding:  true
+    dynamic_padding: true
     decoration: none
 
 font:
@@ -35,47 +35,47 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x181a20'
-    foreground: '0xeeffff'
+    background: "0x181a20"
+    foreground: "0xeeffff"
     #background: '0xeeffff'
     #foreground: '0x181a20'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x212121'
-    cursor: '0xeeffff'
+    text: "0x212121"
+    cursor: "0xeeffff"
     #text: '0xeeffff'
     #cursor: '0x212121'
 
   # Normal colors
   normal:
-    black:   '0x212121'
-    red:     '0xd6295a'
-    green:   '0x77e660'
-    yellow:  '0xffb700'
-    blue:    '0x415ed1'
-    magenta: '0xd060e6'
-    cyan:    '0x00ffff'
-    white:   '0xeeffff'
+    black: "0x212121"
+    red: "0xd6295a"
+    green: "0x77e660"
+    yellow: "0xffb700"
+    blue: "0x415ed1"
+    magenta: "0xd060e6"
+    cyan: "0x00ffff"
+    white: "0xeeffff"
 
   # Bright colors
   bright:
-    black:   '0x4a4a4a'
-    red:     '0xd6295a'
-    green:   '0x77e660'
-    yellow:  '0xffb700'
-    blue:    '0x415ed1'
-    magenta: '0xd060e6'
-    cyan:    '0x00ffff'
-    white:   '0xffffff'
+    black: "0x4a4a4a"
+    red: "0xd6295a"
+    green: "0x77e660"
+    yellow: "0xffb700"
+    blue: "0x415ed1"
+    magenta: "0xd060e6"
+    cyan: "0x00ffff"
+    white: "0xffffff"
 
   indexed_colors:
-    - { index: 16, color: '0xf78c6c' }
-    - { index: 17, color: '0xff5370' }
-    - { index: 18, color: '0x303030' }
-    - { index: 19, color: '0x353535' }
-    - { index: 20, color: '0xb2ccd6' }
-    - { index: 21, color: '0xeeffff' }
+    - { index: 16, color: "0xf78c6c" }
+    - { index: 17, color: "0xff5370" }
+    - { index: 18, color: "0x303030" }
+    - { index: 19, color: "0x353535" }
+    - { index: 20, color: "0xb2ccd6" }
+    - { index: 21, color: "0xeeffff" }
 
 # cursor:
 #   style: Underline
@@ -83,9 +83,8 @@ colors:
 #   unfocused_hollow: false
 
 live_config_reload: true
-                 
-key_bindings:
 
+key_bindings:
   - { key: Key0, mods: Control, action: ResetFontSize }
 
   - { key: Equals, mods: Control, action: IncreaseFontSize }

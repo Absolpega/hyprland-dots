@@ -3,25 +3,69 @@
 DIFF="git diff"
 CP="rsync"
 
+is_diff() {
+	$DIFF --quiet $1 ~/$1
+}
+
 diff() {
+	cd $2
 	files=$(find . -type f -print)
 
 	for file in $files; do
-		command="$DIFF $file ~/$file"
-		echo "$command"
-		sh -c "$command"
+		(
+			set -x
+			$DIFF $file ~/$file
+		)
+	done
+}
+
+diffs() {
+	cd $2
+	files=$(find . -type f -print)
+
+	for file in $files; do
+		is_diff "$file" || echo "$file      ~/$file"
 	done
 }
 
 push() {
-	echo "push placeholder"
+	cd $2
+	files=$(find . -type f -print)
+
+	for file in $files; do
+		is_diff "$file" || (
+			set -x
+			cp ~/"$file" "$file"
+		)
+	done
 }
 
 pull() {
-	echo "pull placeholder"
+	cd $2
+	files=$(find . -type f -print)
+
+	for file in $files; do
+		is_diff "$file" || (
+			set -x
+			cp "$file" ~/"$file"
+		)
+	done
 }
 
-[ "$1" == "diff" ] && diff
-[ "$1" == "push" ] && push
-[ "$1" == "pull" ] && pull
-
+case "$1" in
+diff)
+	diff "$@"
+	;;
+diffs)
+	diffs "$@"
+	;;
+push)
+	push "$@"
+	;;
+pull)
+	pull "$@"
+	;;
+*)
+	echo "$1 is not a command"
+	;;
+esac

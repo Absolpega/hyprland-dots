@@ -1,61 +1,3 @@
-(defvar dummy "")
-
-(defwidget spacer-200px []
-  (box :class "spacer-200px-v")
-  )
-
-(defwidget spacer-100px []
-  (box :class "spacer-100px-v")
-  )
-
-(defwidget spacer-10px []
-  (box :class "spacer-10px-v")
-  )
-
-(defwidget spacer-8rem []
-  (box :class "spacer-8rem-v")
-  )
-
-(defwidget spacer-15rem []
-  (box :class "spacer-15rem-v")
-  )
-
-(defwidget spacer-10rem []
-  (box :class "spacer-10rem-v")
-  )
-
-(defwidget spacer-8rem []
-  (box :class "spacer-8rem-v")
-  )
-
-(defwidget spacer-7rem []
-  (box :class "spacer-7rem-v")
-  )
-
-(defwidget spacer-6rem []
-  (box :class "spacer-6rem-v")
-  )
-
-(defwidget spacer-5rem []
-  (box :class "spacer-5rem-v")
-  )
-
-(defwidget spacer-4rem []
-  (box :class "spacer-4rem-v")
-  )
-
-(defwidget spacer-3rem []
-  (box :class "spacer-3rem-v")
-  )
-
-(defwidget spacer-2rem []
-  (box :class "spacer-2rem-v")
-  )
-
-(defwidget spacer-1rem []
-  (box :class "spacer-1rem-v")
-  )
-
 ; https://github.com/druskus20/eugh  /revealer-example
 ; Revealer on hover, using children
 (defwidget revealer-on-hover [revealvar revealvar-name ?class ?duration ?transition ?orientation]
@@ -82,9 +24,15 @@
     )
   )
 
+(defwidget custom-for [v in]
+  (box
+    (label :text "${v}")
+    )
+  )
+
 
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace | stdbuf -o0 awk '{print substr($0,length($0),1)}'")
 (defwidget workspaces-widget [?orientation]
   (box
     :space-evenly true
@@ -97,9 +45,9 @@
     (for workspace in workspaces
       (eventbox
         :onclick "hyprctl dispatch workspace ${workspace.id}"
-        :class "workspace-box ${workspace.id == current_workspace ? "workspace-current-box" : ""} ${workspace.windows > 0 ? "workspace-occupied-box" : "workspace-empty-box"}"
+        :class "workspace workspace-box ${workspace.id == current_workspace ? "workspace-current" : ""} ${workspace.windows > 0 ? "workspace-occupied" : "workspace-empty"}"
         (label
-          :class "workspace-id ${workspace.id == current_workspace ? "workspace-current-id" : ""} ${workspace.windows > 0 ? "workspace-occupied-id" : "workspace-empty-id"}"
+          :class "workspace workspace-id ${workspace.id == current_workspace ? "workspace-current" : ""} ${workspace.windows > 0 ? "workspace-occupied" : "workspace-empty"}"
           :text "${workspace.id}"
           )
         )
@@ -113,11 +61,6 @@
 ;    (label :text "${window}")
 ;    )
 ;  )
-
-(defwidget empty []
-  (box :class "empty")
-  )
-
 
 (defpoll brightness-value :interval "1s" "echo \"$(brightnessctl get) $(brightnessctl max)\" | awk '{printf \"%f\", ($1*100)/$2}'")
 (defpoll gamma-value :interval "1s" "cat /tmp/current-gamma | awk '{print $3*100}'")
@@ -255,7 +198,6 @@
 (defwidget calendar-widget []
   (calendar
     :class "calendar-widget bar"
-    :onclick "trutrue"
     :day "${today}"
     )
   )
